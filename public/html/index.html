@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test gulp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <!-- build:css css/styles.min.css-->
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
+</head>
+<body>
+
+<section class="section-header-top">
+    <div class="box-header-top">
+        <ul class="list-group">
+            <li class="hot-line c-f">
+                <img src="imgs/smartphone.png" alt="hot line">
+                <span>hot line: 097--538-979</span>
+            </li>
+            <li class="message pd-l-10">
+                <img src="imgs/Messenger.png" alt="messenger">
+            </li>
+            <li class="zalo">
+                <img src="imgs/zalo.png" alt="zalo">
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="section-header-menu">
+    <div class="box-header-menu d-flex h-100">
+        <div class="logo">
+            <img src="imgs/logo.png" alt="logo">
+        </div>
+        <div class="list-menu">
+            <ul class="list-group h-100 hidden-xs">
+                <li><a href="#">Trang chủ</a></li>
+                <li>
+                    <a href="#">Giới thiệu</a>
+                </li>
+                <li class="has-sub__menu">
+                    Sản phẩm
+                    <ul class="">
+                        <li><a href="#">Máy phát điện Cummins</a></li>
+                        <li><a href="#">Máy phát điện Doosan</a></li>
+                        <li><a href="#">Máy phát điện Misubishi</a></li>
+                        <li><a href="#">Máy phát điện cũ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Dịch vụ</a>
+                </li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+            <div class="nav-toggle pointer hidden-md">
+                <span class="fa fa-bars"></span>
+            </div>
+        </div>
+    </div>
+    <div class="menu-mobile">
+
+        <ul class="list-group">
+            <li>
+                <i class="fa fa-times cancel-menu-mobile position-absolute" aria-hidden="true"></i>
+            </li>
+            <li class="active"><a href="#">Trang chủ</a></li>
+            <li>
+                <a href="#">Giới thiệu</a>
+            </li>
+            <li class="has-sub__menu">
+                Sản phẩm
+                <ul class="">
+                    <li><a href="#">Máy phát điện Cummins</a></li>
+                    <li><a href="#">Máy phát điện Doosan</a></li>
+                    <li><a href="#">Máy phát điện Misubishi</a></li>
+                    <li><a href="#">Máy phát điện cũ</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Dịch vụ</a>
+            </li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--<section class="section-slider">
+    &lt;!&ndash;<div class="box-slider">
+        <div class="slider-item">
+            <img src="imgs/slide_1.png">
+        </div>
+        <div class="slider-item">
+            <img src="imgs/slide_1.png">
+        </div>
+    </div>&ndash;&gt;
+    <div class="box-slider">
+        <img src="imgs/slide_1.png">
+    </div>
+    <div class="box-fade"></div>
+</section>-->
+
+<section class="main-content">
+    <div class="introduce">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-12 col-left">
+                    <div class="col-left__content">
+                        <h4>Nhà cung cấp máy phát điện</h4>
+                        <h2>Hàng đầu Việt Nam</h2>
+                        <p>
+                            Chúng tôi tự tin là một trong những doanh nghiệp hàng đầu về cung cấp và bảo dưỡng máy phát điện.
+                            Ngoài ra những sản phẩm đã qua sử dụng cũng được chúng tôi cung cấp với chất lượng tốt nhất.
+                        </p>
+                        <button class="btn btn-default btn-seen">
+                            Xem thêm
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-5 col-12 col-right">
+                    <img src="imgs/Machines.png" alt="introduce product">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-12 service-item">
+                    <img src="imgs/service_1.png" alt="dịch vụ">
+                </div>
+                <div class="col-md-4 col-12 service-item">
+                    <img src="imgs/service_2.png" alt="dịch vụ">
+                </div>
+                <div class="col-md-4 col-12 service-item">
+                    <img src="imgs/service_3.png" alt="dịch vụ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hot-products">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hot-products__title d-flex">
+                        <h3><i>Sản phẩm</i></h3>
+                        <div class="hot-products__title-hr">
+                            <img src="imgs/hr_product.png" alt="Sản phẩm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 hot-product-item">
+                    <div class="hot-product-item__title">
+                        <h3>Máy phát điện Cummins</h3>
+                    </div>
+                    <div class="hot-product-item__content">
+                        <p class="content">
+                            Cummins (Mỹ) – Là hãng sản xuất máy phát điện lớn nhất trên thế giới,
+                            và là hãng duy nhất sản xuất tất cả các bộ phận tạo ra một máy phát điện,
+                            do tính đồng bộ cao nên hoàn toàn có thể tin tưởng được chất lượng tuyệt vời của dòng máy này khi sử dụng.
+                        </p>
+                        <div class="images">
+                            <img src="imgs/partner_1.png" alt="brand">
+                            <img src="imgs/partner_2.png" alt="brand">
+                        </div>
+                        <div class="info-brand">
+                            <span>Thành lập năm 1919</span><br>
+                            <span>Trụ sở: Columbus, Indiana, United States</span><br>
+                            <span>Số lượng nhân viên: ~58,600 (2018)</span><br>
+                            <span>Công ty con: Cummins Filtration Inc, Hydrogenics, MORE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 hot-product-item">
+                    <div class="hot-product-item__title">
+                        <h3>Máy phát điện Doosan</h3>
+                    </div>
+                    <div class="hot-product-item__content">
+                        <p class="content">
+                            Máy phát điện Doosan sử dụng động cơ Doosan –
+                            Hàn Quốc có một số ưu điểm như: hoạt động bền bỉ, máy khỏe. Với dải công suất từ: 60kVA – 825kVA.
+                        </p>
+                        <div class="images">
+                            <img src="imgs/partner_3.png" alt="brand">
+                            <img src="imgs/partner_4.png" alt="brand">
+                        </div>
+                        <div class="info-brand">
+                            <span>Thành lập năm 1896</span><br>
+                            <span>Trụ sở: Seoul, South Korea</span><br>
+                            <span>Số lượng nhân viên: ~41,400 (38 nước)</span><br>
+                            <span>Công ty con: Bobcat Company, Doosan Bears, Doosan Babcock, MORE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 hot-product-item">
+                    <div class="hot-product-item__title">
+                        <h3>Máy phát điện cũ (Tổng hợp)</h3>
+                    </div>
+                    <div class="hot-product-item__content">
+                        <p class="content">
+                            Chúng tôi luôn cung cấp đầy đủ các loại máy phát điện mới và máy phát điện cũ chính hãng có giấy tờ và xuất xứ nguồn góc rõ ràng.
+                            Chúng tôi có nhiều sản phẩm với nhiều công suất khác nhau của nhiều hãng hàng đầu thế giới cho Quý khách hàng lựa chọn.
+                        </p>
+                        <div class="images">
+                            <img src="imgs/partner_5.png" alt="brand">
+                            <img src="imgs/partner_6.png" alt="brand">
+                        </div>
+                        <div class="info-brand">
+                            <span>Thành lập năm 2010</span><br>
+                            <span>Trụ sở: Số 9 Ngõ Quỳnh, phường Thanh Nhàn, Hai Bà Trưng, Tp. Hà Nội</span><br>
+                            <span>VPĐD: 21/12/24 Khu phố 3,  An Phú Đông, quận 12, TP HCM) </span><br>
+                            <span>Nhà xưởng: Thôn 4 - xã Vạn Phúc, Thanh Trì, Hà Nội.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12 info-company">
+                <div class="box-footer-info">
+                    <span>Nhà xưởng: Thôn 4 - xã Vạn Phúc, Thanh Trì, Hà Nội</span><br>
+                    <span>Trụ sở: Số 9 Ngõ Quỳnh, phường Thanh Nhàn, quận Hai Bà Trưng, TP. Hà Nội</span><br>
+                    <span>VPĐD: 21/12/24 Khu phố 3, phường An Phú đông, quận 12, TP HCM</span><br>
+                    <span>Điện thoại : 0979.538.979</span><br>
+                    <span>Email : mayphatdienthanglong@gmail.com</span><br>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 tag-product">
+                <div class="box-footer-info">
+                    <span class="tag-item">Cummins</span>
+                    <span class="tag-item">Doosan</span>
+                    <span class="tag-item">Máy phát điện</span>
+                    <span class="tag-item">Perkins</span>
+                    <span class="tag-item">Thăng Long</span>
+                    <span class="tag-item">Máy phát</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- build:js js/custom.min.js-->
+<script type="text/javascript" src="js/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/lib/popper.min.js"></script>
+<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lib/fa_icon.js"></script>
+<script type="text/javascript" src="js/lib/slick.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<!--<script type="text/javascript">
+    $(".box-slider").slick({
+        dots: true,
+        infinite: true,
+        centerMode: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+</script>-->
+<!-- endbuild -->
+
+</body>
+
+</html>

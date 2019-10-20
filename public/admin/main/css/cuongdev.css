@@ -1,0 +1,99 @@
+/* ========= CUONGDEV CSS ========= */
+
+/*IMAGE PREVIEW*/
+.image_preview_wrapper {
+    position: relative;
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.image_preview_wrapper .image_preview_action {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.image_preview_wrapper:hover .image_preview_action {
+    display: block;
+}
+
+.image_preview_wrapper .image_wrapper {
+    text-align: center;
+}
+
+.image_preview_wrapper .image_preview {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/*POST CATEGARY*/
+.cat_list_wrapper ul {
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 10px 15px 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* BOOTSTRAP TAGINPUT */
+.bootstrap-tagsinput {
+    width: 100%;
+}
+
+/*LOGIN_REGISTER*/
+.login-register video {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* WIDGET CSS */
+.collapse_block a.collapse_button {
+    margin: 10px 0px;
+    padding: 5px 10px;
+    display: block;
+    line-height: 1.5;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    position: relative;
+    color: #000;
+    font-weight: 700;
+}
+
+.collapse_block a.collapse_button .collapse_button_group {
+    display: none;
+}
+
+.collapse_block a.collapse_button:hover .collapse_button_group {
+    display: inline-block;
+}
+
+.collapse_block a.collapse_button .collapse_button_group {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%)
+}
+
+/*PAGINATION*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    margin-bottom: 5px;
+}
