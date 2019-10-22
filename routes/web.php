@@ -104,6 +104,7 @@ $router->group(['namespace' => 'Client'], function ($router) {
     $router->get('/tin-tuc', 'PostController@index')->name('list_post_view');
     $router->get('/tin-tuc/{slug}', 'PostController@detail')->name('detail_post_view');
     $router->get('/dich-vu/{slug}', 'IndexController@detailService')->name('detail_service_view');
+    $router->get('/loai-san-pham/{slug}', 'IndexController@detailCategory')->name('detail_category_view');
     $router->get('/san-pham/{slug}', 'IndexController@detailProduct')->name('detail_product_view');
     //</editor-fold>
 });

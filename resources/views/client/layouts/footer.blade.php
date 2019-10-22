@@ -12,12 +12,11 @@
             </div>
             <div class="col-md-6 col-12 tag-product">
                 <div class="box-footer-info">
-                    <span class="tag-item">Cummins</span>
-                    <span class="tag-item">Doosan</span>
-                    <span class="tag-item">Máy phát điện</span>
-                    <span class="tag-item">Perkins</span>
-                    <span class="tag-item">Thăng Long</span>
-                    <span class="tag-item">Máy phát</span>
+                    @if($list_category)
+                        @foreach($list_category as $category)
+                            <span class="tag-item"><a href="{{route('detail_product_view',['slug' => $product->slug . '---' . $product->id])}}">{{$category->title_mobile}}</a></span>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

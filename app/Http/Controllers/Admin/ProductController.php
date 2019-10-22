@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BaseModel;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\View;
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $categoryRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository,CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
         View::share('type_menu', 'product');
     }
 
@@ -23,13 +26,14 @@ class ProductController extends Controller
         $params = [
             'keyword' => '',
         ];
-        $query = $request->only('keyword', 'status','category');
+        $query = $request->only('keyword', 'status','category_id');
         $params = array_merge($params, $query);
         if(isset($params['status']) && $params['status'] == 9){
             unset($params['status']);
         }
         $list_product = $this->productRepository->getList($params);
-        return view('admin.product.list_view', compact('list_product','params'));
+        $list_category = $this->categoryRepository->getList(['status' => BaseModel::STATUS_ACTIVE],100);
+        return view('admin.product.list_view', compact('list_product','list_category','params'));
     }
 
     public function updateProductView($id = null){
@@ -41,8 +45,8 @@ class ProductController extends Controller
                 $this->resFail(null, 'Không tìm thấy sản phẩm');
             }
         }
-
-        return view('admin.product.form', compact('product'));
+        $list_category = $this->categoryRepository->getList(['status' => BaseModel::STATUS_ACTIVE],100);
+        return view('admin.product.form', compact('product', 'list_category'));
     }
 
     public function createProduct(Request $request){
@@ -56,7 +60,7 @@ class ProductController extends Controller
             return $this->resFail(null, $validator->errors());
         }
 
-        $product_data = $request->only('id','title','status', 'content','description', 'seo_title','seo_description','seo_keyword','image','code');
+        $product_data = $request->only('id','title','status', 'content','description', 'seo_title','seo_description','seo_keyword','image','code','category_id','title_mobile');
 
         if(isset($product_data['status']) && $product_data['status'] == 'on'){
             $product_data['status'] = 1;
@@ -89,7 +93,7 @@ class ProductController extends Controller
             redirect()->back()->withErrors($validator->errors());
         }
 
-        $product_data = $request->only('id','title','status', 'content','description', 'seo_title','seo_description','seo_keyword','image','code');
+        $product_data = $request->only('id','title','status', 'content','description', 'seo_title','seo_description','seo_keyword','image','code','category_id','title_mobile');
 
         $product_id = $request->get('id');
 

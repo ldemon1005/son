@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\BaseModel;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ConfigRepository;
 use App\Repositories\ContactRepository;
 use App\Repositories\ProductRepository;
@@ -18,24 +19,27 @@ class IndexController extends Controller
     private $contactRepository;
     private $serviceRepository;
     private $productRepository;
+    private $categoryRepository;
     public function __construct(ConfigRepository $configRepository,ServiceRepository $serviceRepository, ProductRepository $productRepository,
+                                CategoryRepository $categoryRepository,
                                 ContactRepository $contactRepository)
     {
         $this->configRepository = $configRepository;
         $this->contactRepository = $contactRepository;
         $this->serviceRepository = $serviceRepository;
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
 
         $config = $this->configRepository->first();
         $config->banner_index = json_decode($config->banner_index);
         $config->banner_post = json_decode($config->banner_post);
         $services = $this->serviceRepository->getList(['status' => BaseModel::STATUS_ACTIVE], 3);
-        $products = $this->productRepository->getList(['status' => BaseModel::STATUS_ACTIVE], 3);
+        $list_category = $this->categoryRepository->getList(['status' => BaseModel::STATUS_ACTIVE]);
 
         View::share([
             'config' => $config,
             'services' => $services,
-            'products' => $products
+            'list_category' => $list_category
         ]);
     }
 
@@ -63,6 +67,26 @@ class IndexController extends Controller
         return redirect()->back()->withErrors('Vui lòng quay lại sau!');
     }
 
+    public function detailCategory($slug = null){
+        $params = explode('---',$slug);
+        if(isset($params[1])){
+
+            $category = $this->categoryRepository->getByID($params[1]);
+
+            if(!$category){
+                return redirect()->back()->withErrors('Vui lòng quay lại sau!');
+            }
+
+            $category_data = [
+                'total_view' => $category->total_view + 1
+            ];
+            $this->categoryRepository->updateCategory($category->id,$category_data);
+            $category->slide_image = json_decode($category->slide_image);
+            return view('client.detail.category',compact('category'));
+        }
+        return redirect()->back()->withErrors('Vui lòng quay lại sau!');
+    }
+
     public function detailProduct($slug = null){
         $params = explode('---',$slug);
         if(isset($params[1])){
@@ -77,8 +101,8 @@ class IndexController extends Controller
                 'total_view' => $product->total_view + 1
             ];
             $this->productRepository->updateProduct($product->id,$product_data);
-            $product->codes = explode(',',$product->code);
-            return view('client.detail.product',compact('product'));
+            $category = $this->categoryRepository->getByID($product->category_id);
+            return view('client.detail.product',compact('product','category'));
         }
         return redirect()->back()->withErrors('Vui lòng quay lại sau!');
     }

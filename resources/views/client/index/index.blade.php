@@ -45,16 +45,22 @@
                             </div>
                         </div>
                     </div>
-                    @foreach($products as $product)
+                    @foreach($list_category->chunk(3)[0] as $category)
                         <div class="col-md-4 col-12 hot-product-item">
-                            <a href="{{route('detail_product_view',['slug' => $product->slug . '---' . $product->id])}}">
-                                <div class="hot-product-item__title">
-                                    <h3>{{$product->title}}</h3>
+                            <div class="hot-product-item__title">
+                                <a href="{{route('detail_category_view',['slug' => $category->slug . '---' . $category->id])}}"><h3>{{$category->title}}</h3></a>
+                            </div>
+                            <div class="hot-product-item__content">
+                                <div class="text">
+                                    {!! $category->description1 !!}
                                 </div>
-                                <div class="hot-product-item__content">
-                                    {!! $product->description !!}
+                                <div class="images">
+                                    <img src="{{$category->image}}" alt="brand">
                                 </div>
-                            </a>
+                                <div class="info-brand">
+                                    {!! $category->description2 !!}
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>

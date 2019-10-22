@@ -22,10 +22,23 @@
                         </div>
                     </div>
                     <div class="col-md-3 box-introduce__sidebar">
-                        @foreach($config->banner_post as $image)
-                            <div class="img-item pd-t-43 pd-bt-43 bg-c2">
-                                <img src="{{$image}}" alt="introduce banner">
-                            </div>
+                        @foreach($config->banner_post as $key => $image)
+
+                            @if($key % 3 == 0 )
+                                <div class="img-item pd-t-63 pd-bt-63 bg-c2">
+                                    <img src="{{$image}}" alt="introduce banner">
+                                </div>
+                            @endif
+                            @if($key % 3 == 1 )
+                                <div class="img-item pd-t-201 pd-bt-201 bg-f">
+                                    <img src="{{$image}}" alt="introduce banner">
+                                </div>
+                            @endif
+                            @if($key % 3 == 2 )
+                                <div class="img-item pd-t-201 pd-bt-201 bg-ad">
+                                    <img src="{{$image}}" alt="introduce banner">
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>

@@ -34,6 +34,14 @@
                             <option {{isset($params['status']) && $params['status'] == 0 ? 'selected' : ''}} value="0">Không hoạt động</option>
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <select class="form-control" onchange="$('#search-form').submit()" name="category_id">
+                            <option value="" selected>Tất cả danh mục</option>
+                            @foreach($list_category as $category)
+                                <option {{isset($params['category_id']) && $params['category_id'] == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </form>
                 <div class="col-md-3 text-right">
                     <a type="button" id="add-product" class="btn btn-primary" href="{{route('admin_update_product_view',['id' => 0])}}">Thêm mới</a>
@@ -44,6 +52,7 @@
                     <th style="width: 10px">#</th>
                     <th>Title</th>
                     <th>Image</th>
+                    <th>Danh mục</th>
                     <th style="width: 10%;text-align: center">Status</th>
                     <th style="width: 15%;text-align: center">Action</th>
                 </tr>
@@ -52,6 +61,7 @@
                         <td>{{$key + 1}}.</td>
                         <td>{{$product->title}}</td>
                         <td><img height="30" class="image_preview" src="{{$product->image ? $product->image : asset('img/placeholder.png')}}"></td>
+                        <td>{{$product->getCategory ? $product->getCategory->title : ''}}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-{{$product->status == 1 ? 'success' : 'danger'}} btn-rounded btn-sm" data-toggle="tooltip" title="{{$product->status == 1 ? 'Hoạt động' : 'Không hoạt động'}}">
                                 <i class="fa fa-{{$product->status == 1 ? 'eye' : 'eye-slash'}}"></i>

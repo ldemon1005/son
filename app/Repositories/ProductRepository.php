@@ -31,12 +31,15 @@ class ProductRepository extends BaseRepository
                 if (!empty($params['status']) || isset($params['status'])) {
                     $query->where('status', '=', intval($params['status']));
                 }
-            })->orderBy($params['order_by'] ?? 'created_at', $params['order_direction'] ?? 'desc')->paginate($limit);
+                if (!empty($params['category_id']) || isset($params['category_id'])) {
+                    $query->where('category_id', '=', intval($params['category_id']));
+                }
+            })->with('getCategory')->orderBy($params['order_by'] ?? 'created_at', $params['order_direction'] ?? 'desc')->paginate($limit);
     }
 
     public function getByID($product_id)
     {
-        return Product::where('id', '=', $product_id)->first();
+        return Product::where('id', '=', $product_id)->with('getCategory')->first();
     }
 
     public function findByProduct($product_name)

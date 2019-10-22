@@ -25,10 +25,24 @@
                                 <small id="helpProductTitle" class="form-text text-muted">Tiêu đề sản phẩm là bắt buộc</small>
                             </div>
                             <div class="form-group">
+                                <label for="product_title_mobile">Tiêu đề mobile <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="title_mobile" id="product_title_mobile" aria-describedby="helpProductTitleMobile" placeholder="Nhập tiêu đề sản phẩm trên điện thoại"
+                                       autocomplete="off" value="{{$product ? $product->title_mobile : ''}}" required>
+                                <small id="helpProductTitle" class="form-text text-muted">Tiêu đề sản phẩm trên điện thoại là bắt buộc</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_content">Danh mục bài viết</label>
+                                <select class="form-control" name="category_id">
+                                    @foreach($list_category as $category)
+                                        <option {{$product && $product->category_id == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="product_title">Mã sản phẩm <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="code" id="product_code" aria-describedby="helpProductCode" placeholder="Nhập mã sản phẩm"
                                        autocomplete="off" value="{{$product ? $product->code : ''}}" required>
-                                <small id="helpProductCode" class="form-text text-muted">Mã sản phẩm là bắt buộc, cách nhau bởi dấu " , "</small>
+                                <small id="helpProductCode" class="form-text text-muted">Mã sản phẩm là bắt buộc</small>
                             </div>
                             <div class="form-group">
                                 <label for="product_content">Nội dung</label>

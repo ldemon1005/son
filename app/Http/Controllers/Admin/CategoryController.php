@@ -16,14 +16,14 @@ class CategoryController extends Controller
     public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        View::share('type_menu', 'post');
+        View::share('type_menu', 'product');
     }
 
     public function listView(Request $request){
         $params = [
             'keyword' => '',
         ];
-        $query = $request->only('keyword', 'status');
+        $query = $request->only('keyword', 'status','category_id');
         $params = array_merge($params, $query);
         if(isset($params['status']) && $params['status'] == 9){
             unset($params['status']);
@@ -32,16 +32,17 @@ class CategoryController extends Controller
         return view('admin.category.list_view', compact('list_category','params'));
     }
 
-    public function updateCategoryView($id){
-        $category = $this->categoryRepository->getByID($id);
+    public function updateCategoryView($id = null){
+        $category = null;
+        if($id != 0){
+            $category = $this->categoryRepository->getByID($id);
 
-        if(!$category){
-            $this->resFail(null, 'Không tìm thấy thiết bị');
+            if(!$category){
+                $this->resFail(null, 'Không tìm thấy sản phẩm');
+            }
         }
-
-        $content = view('admin.category.form', compact('category'))->render();
-
-        return $this->resSuccess($content, '');
+        $category->slide_image = json_decode($category->slide_image);
+        return view('admin.category.form', compact('category'));
     }
 
     public function createCategory(Request $request){
@@ -54,7 +55,9 @@ class CategoryController extends Controller
             return $this->resFail(null, $validator->errors());
         }
 
-        $category_data = $request->only('title','status');
+        $category_data = $request->only('id','title','status', 'content','description1','description2', 'seo_title','seo_description','seo_keyword','image','slide_image','title_mobile');
+
+        $category_data['slide_image'] = json_encode(array_filter($category_data['slide_image']));
 
         if(isset($category_data['status']) && $category_data['status'] == 'on'){
             $category_data['status'] = 1;
@@ -78,14 +81,17 @@ class CategoryController extends Controller
     public function updateCategory(Request $request){
         $validator = Validator::make($request->input(), [
             'id' => 'required',
-            'title' => 'required'
+            'title' => 'required',
+            'content' => 'required'
         ]);
 
         if ($validator->fails()) {
             redirect()->back()->withErrors($validator->errors());
         }
 
-        $category_data = $request->only('id','title','status');
+        $category_data = $request->only('id','title','status', 'content','description1','description2', 'seo_title','seo_description','seo_keyword','image','slide_image','title_mobile');
+
+        $category_data['slide_image'] = json_encode(array_filter($category_data['slide_image']));
 
         $category_id = $request->get('id');
 

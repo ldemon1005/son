@@ -33,8 +33,8 @@
                 <li class="has-sub__menu">
                     Sản phẩm
                     <ul class="">
-                        @foreach($products as $product)
-                            <li><a href="{{route('detail_product_view',['slug' => $product->slug . '---' . $product->id])}}">{{$product->title}}</a></li>
+                        @foreach($list_category as $category)
+                            <li><a href="{{route('detail_category_view',['slug' => $category->slug . '---' . $category->id])}}">{{$category->title}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -66,8 +66,8 @@
             <li class="has-sub__menu">
                 Sản phẩm
                 <ul class="">
-                    @foreach($products as $product)
-                        <li><a href="#">{{$product->title}}</a></li>
+                    @foreach($list_category as $category)
+                        <li><a href="{{route('detail_category_view',['slug' => $category->slug . '---' . $category->id])}}">{{$category->title}}</a></li>
                     @endforeach
                 </ul>
             </li>
@@ -75,7 +75,7 @@
                 Dịch vụ
                 <ul class="">
                     @foreach($services as $service)
-                        <li><a href="#">{{$service->title}}</a></li>
+                        <li><a href="{{route('detail_service_view',['slug' => $service->slug . '---' . $service->id])}}">{{$service->title}}</a></li>
                     @endforeach
                 </ul>
             </li>
