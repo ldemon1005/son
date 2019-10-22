@@ -59,9 +59,9 @@
             <li>
                 <i class="fa fa-times cancel-menu-mobile position-absolute" aria-hidden="true"></i>
             </li>
-            <li class="active"><a href="#">Trang chủ</a></li>
+            <li class="active"><a href="{{route('index_view')}}">Trang chủ</a></li>
             <li>
-                <a href="#">Giới thiệu</a>
+                <a href="{{route('introduction_view')}}">Giới thiệu</a>
             </li>
             <li class="has-sub__menu">
                 Sản phẩm
@@ -79,7 +79,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="{{route('contact_view')}}">Liên hệ</a></li>
         </ul>
     </div>
 </section>
